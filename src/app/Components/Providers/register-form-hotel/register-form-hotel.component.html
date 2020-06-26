@@ -1,0 +1,69 @@
+<h2>Agregar hotel</h2>
+<form [formGroup]="registerHotel" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="name">Nombre del hotel:</label>
+    <input type="text" class="form-control" placeholder="Ingrese el nombre del hotel" id="nameHotel" formControlName="nameHotel" [ngClass]="{ 'is-invalid': submitted && f.nameHotel.errors }">
+    <div *ngIf="submitted && f.nameHotel.errors" class="invalid-feedback">
+      <div *ngIf="f.nameHotel.errors.required">* El nombre del hotel es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="loc">Ubicación:</label>
+    <input type="text" class="form-control" placeholder="Ingrese la ubicación del hotel" id="locationHotel" formControlName="locationHotel" [ngClass]="{ 'is-invalid': submitted && f.locationHotel.errors }">
+    <div *ngIf="submitted && f.locationHotel.errors" class="invalid-feedback">
+      <div *ngIf="f.locationHotel.errors.required">* La ubicación del hotel es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="tel">Teléfono 1:</label>
+    <input type="text" class="form-control" placeholder="Ingrese el número telefónico" id="telHotel" formControlName="telHotel" [ngClass]="{ 'is-invalid': submitted && f.telHotel.errors }">
+    <div *ngIf="submitted && f.telHotel.errors" class="invalid-feedback">
+      <div *ngIf="f.telHotel.errors.required">* Debe de tener por lo menos un número de teléfono hotel es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="tel2">Teléfono 2:</label>
+    <input type="text" class="form-control" placeholder="Ingrese otro número telefónico (si lo tiene)" id="tel2" formControlName="tel2">
+  </div>
+
+  <div class="form-group">
+    <label for="descHotel">Descripción del hotel:</label>
+    <input type="text" class="form-control" placeholder="Ingrese una breve descripción del hotel" id="descHotel" formControlName="descHotel" [ngClass]="{ 'is-invalid': submitted && f.descHotel.errors }">
+    <div *ngIf="submitted && f.descHotel.errors" class="invalid-feedback">
+      <div *ngIf="f.descHotel.errors.required">* La descripción del hotel es obligatoria</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="photoHotel">Fotos del hotel</label>
+    <input
+        formControlName="photoHotel"
+        id="photoHotel"
+        type="photoHotel"
+        class="form-control"
+        (change)="onphotoHotelChange($event)">
+  </div>
+
+  <div class="form-group">
+    <label for="addressHotel">Dirección del hotel:</label>
+    <input type="text" class="form-control" placeholder="Ingrese la dirección del hotel" id="addressHotel" formControlName="addressHotel" [ngClass]="{ 'is-invalid': submitted && f.addressHotel.errors }">
+    <div *ngIf="submitted && f.addressHotel.errors" class="invalid-feedback">
+      <div *ngIf="f.addressHotel.errors.required">* La dirección del hotel es obligatoria</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="fkCompany">Identificación de empresa:</label>
+    <input type="text" class="form-control" placeholder="Id empresa" id="fkCompany" formControlName="fkCompany" [ngClass]="{ 'is-invalid': submitted && f.fkCompany.errors }">
+    <div *ngIf="submitted && f.fkCompany.errors" class="invalid-feedback">
+      <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary mb-3">Submit</button>
+
+</form>
