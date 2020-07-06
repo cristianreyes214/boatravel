@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-// importamos la libreria httpclient y el servicio databases
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DatabasesService } from '../../../databases.service';
-
 
 @Component({
   selector: 'app-register-form-hotel',
@@ -13,16 +11,16 @@ import { DatabasesService } from '../../../databases.service';
 
 export class RegisterFormHotelComponent implements OnInit {
 
-  // declaramos las variables;
-
+  // Declaración de las variables;
   dataHotel: any = [];
   searchHotel: FormGroup;
   registerHotel: FormGroup;
   deleteHotel: FormGroup;
 
-// se instancia en el constructor una variable que sea del tipo de las importaciones realizadas para poder usarlas
+// Se instancia en el constructor una variable que sea del tipo de las importaciones realizadas para poder usarlas
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private databasesService: DatabasesService) { }
-// aqui se instancia de manera inmedita los elementos del componente que estan dentro de la instancia (similar al update de Unity)
+
+  // Aqui se instancia de manera inmedita los elementos del componente que estan dentro de la instancia (similar al update de Unity)
   ngOnInit(): void {
     this.searchHotel = this.formBuilder.group({});
     this.deleteHotel = this.formBuilder.group({
@@ -35,24 +33,54 @@ export class RegisterFormHotelComponent implements OnInit {
       telHotel: [''],
       tel2: [''],
       descHotel: [''],
-      photoHotel: [''],
+      file: [''],
+      fileSource: [''],
       addressHotel: [''],
       fkCompany: ['']
     });
   }
-// metodo que llama determinado boton
-  addHotelButton() {
 
-     this.InsertDateHotel();
+  // Funciones para obtener información de la imagen que tiene un id file y comprobar que se enviá algo y no un obj vacio.
+  get f(){
+    return this.registerHotel.controls;
   }
+
+  onFileChange(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.registerHotel.patchValue({
+        fileSource: file
+      });
+    }
+  }
+
+// Método para añadir nuevo hotel, con el botón AddHotelButton
+  addHotelButton() {
+  const formData = new FormData();
+  // append es un método de FormData para agregar un valor nuevo al final del conjunto de valores
+  formData.append('idHotel', this.registerHotel.value.idHotel);
+  formData.append('nameHotel', this.registerHotel.value.nameHotel);
+  formData.append('locationHotel', this.registerHotel.value.locationHotel);
+  formData.append('telHotel', this.registerHotel.value.telHotel);
+  formData.append('tel2', this.registerHotel.value.tel2);
+  formData.append('descHotel', this.registerHotel.value.descHotel);
+  formData.append('file', this.registerHotel.get('fileSource').value);
+  formData.append('addressHotel', this.registerHotel.value.addressHotel);
+  formData.append('fkCompany', this.registerHotel.value.fkCompany);
+  //this.InsertDateHotel();
+
+  return this.http.post('http://localhost/boatravel-app/src/Funciones_php/Insert_hotel.php', formData).subscribe((res: Response) =>
+    {
+      alert('Hotel añadido exitosamente');
+    });
+  }
+
   // metodo que llama determinado boton
   showHotelButton(){
-
     this.showHotel();
   }
 
   deleteHotelButton(){
-
     this.deleteHotelFuntion();
   }
 
@@ -69,6 +97,7 @@ export class RegisterFormHotelComponent implements OnInit {
     this.databasesService.deleteDataHotel(this.deleteHotel.value).subscribe();
     alert( 'eliminar' );
   }
+
 // metodo que se conecta con la bolsa de servicios
   showHotel(){
     // llamamos un servicio en particular  y nos subscribimos para acceder a la informacion que trae la conexion con la DB
@@ -79,17 +108,14 @@ export class RegisterFormHotelComponent implements OnInit {
     alert('mostrar');
   }
 
-// metodo que se conecta con el servicio
+/* metodo que se conecta con el servicio
   InsertDateHotel() {
+
     // llamamos un servicio en particular  y nos subscribimos para acceder a la informacion que trae la conexion con la DB
      this.databasesService.InsertDateHotel(this.registerHotel.value).subscribe(
-       datos => {
-         if (datos[' resultado '] === 'OK') {
-          alert(datos[' mensaje']);
-         }
-       }
-     );
-
+      (res: Response) => {
+          console.log("epa");
+      });
    }
-
+*/
 }
