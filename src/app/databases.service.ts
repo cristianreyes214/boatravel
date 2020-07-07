@@ -23,5 +23,21 @@ export class DatabasesService {
   updateDataHotel(registerHotel){
     return this.http.post(`${this.URL}Actualizar.php`, JSON.stringify(registerHotel));
   }
+  loginDataProveedor(loginProveedor){
+    return this.http.post(`${this.URL}loginProveedor.php`, JSON.stringify(loginProveedor));
+  }
+  ///////////////////////////////////////////////// habitacio
+  showDataRoom(){
+    return this.http.get(`${this.URL}mostrarHabitacion.php`);
+  }
+  insertDataRoom(registerRoom){
+    return this.http.post(`${this.URL}InsertarDatosHabitacion.php`, JSON.stringify(registerRoom));
+  }
+  lookForDataHotel(lookForHotel){
+    return this.http.post(`${this.URL}BuscarHoteles.php`, JSON.stringify(lookForHotel));
+  }
+  buscadorHabitaciones123(lookForHotel){
+    return this.http.post(`${this.URL}BuscadorHabitaciones123.php`, JSON.stringify(lookForHotel));
+  }
 
 }

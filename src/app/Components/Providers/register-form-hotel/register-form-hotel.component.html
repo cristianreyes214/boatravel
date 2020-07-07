@@ -1,5 +1,29 @@
 <h2>Agregar hotel</h2>
-<form [formGroup]="registerHotel" (ngSubmit)="addHotelButton()">
+
+
+<form [formGroup]="loginProveedor" (ngSubmit)="loginProvedorButton()">
+
+  <div class="form-group">
+    <label for="userProveedor">usuario proveedor:</label>
+    <input type="text" class="form-control" placeholder="usuario proveedor" id="userProveedor" formControlName="userProveedor" >
+  </div>
+
+
+  <div class="form-group">
+    <label for="passwordProveedor">contraseña proveedor:</label>
+    <input type="text" class="form-control" placeholder="contraseña proveedor" id="passwordProveedor" formControlName="passwordProveedor" >
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary mb-3">Login</button>
+
+</form>
+<br>
+<br>
+<br>
+
+
+
+<form [formGroup]="registerHotel" (ngSubmit)="addHotelButton()" *ngIf= "active">
 
   <div class="form-group">
     <label for="id">id del hotel:</label>
@@ -46,7 +70,7 @@
   </div>
 
   <div class="form-group">
-    <label for="photoHotel">Descripción del hotel:</label>
+    <label for="photoHotel">Foto del hotel:</label>
     <input type="text" class="form-control" placeholder="Ingrese cualquier cosa" id="photoHotel" formControlName="photoHotel" >
     <!-- <div *ngIf="submitted && f.descHotel.errors" class="invalid-feedback">
       <div *ngIf="f.descHotel.errors.required">* La descripción del hotel es obligatoria</div>
@@ -115,6 +139,8 @@
   </table>
   </div>
   </form>
+
+  
   <form [formGroup]="deleteHotel" (ngSubmit)="deleteHotelButton()">
     <div class="form-group">
       <label for="IDDHotel">ID del hotel a eliminar:</label>
@@ -122,3 +148,204 @@
       <button type="submit" class="btn btn-primary mb-3">Eliminar</button><br>
       </div>
   </form>
+  <br>
+<br>
+<br>
+
+
+
+
+
+
+  
+  <form [formGroup]="registerRoom" (ngSubmit)="addRoomButton()" *ngIf= "!active">
+  
+    <div class="form-group">
+      <label for="idRoom">id del habitacion:</label>
+      <input type="text" class="form-control" placeholder="Ingrese el nombre del hotel" id="idRoom" formControlName="idRoom" >
+      <!-- <div *ngIf="submitted && f.nameHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.nameHotel.errors.required">* El nombre del hotel es obligatorio</div>
+      </div> -->
+    </div>
+    <div class="form-group">
+      <label for="capacityRoom">Capacidad habitacion:</label>
+      <input type="text" class="form-control" placeholder="Ingrese la capacidad de la habitacion" id="capacityRoom" formControlName="capacityRoom" >
+      <!-- <div *ngIf="submitted && f.nameHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.nameHotel.errors.required">* El nombre del hotel es obligatorio</div>
+      </div> -->
+    </div>
+  
+    <div class="form-group">
+      <label for="Checkout">Checkout:</label>
+      <input type="text" class="form-control" placeholder="Ingrese el Checkout" id="Checkout" formControlName="Checkout" >
+      <!-- <div *ngIf="submitted && f.locationHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.locationHotel.errors.required">* La ubicación del hotel es obligatorio</div>
+      </div> -->
+    </div>
+  
+    <div class="form-group">
+      <label for="dateStartRoom">Fecha inicio habitacion:</label>
+      <input type="text" class="form-control" placeholder="Ingrese fecha de disponivilidad inicial" id="dateStartRoom" formControlName="dateStartRoom">
+      <!-- <div *ngIf="submitted && f.telHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.telHotel.errors.required">* Debe de tener por lo menos un número de teléfono hotel es obligatorio</div>
+      </div> -->
+    </div>
+  
+    <div class="form-group">
+      <label for="dateEndRoom">Fecha fin habitacion:</label>
+      <input type="text" class="form-control" placeholder="Ingrese fecha de disponivilidad final " id="dateEndRoom" formControlName="dateEndRoom">
+    </div>
+  
+    <div class="form-group">
+      <label for="Checkin">Checkin :</label>
+      <input type="text" class="form-control" placeholder="Ingrese el Checkin" id="Checkin" formControlName="Checkin" >
+      <!-- <div *ngIf="submitted && f.descHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.descHotel.errors.required">* La descripción del hotel es obligatoria</div>
+      </div> -->
+    </div>
+  
+    <div class="form-group">
+      <label for="drescriptionRoom">descripcion habitacion:</label>
+      <input type="text" class="form-control" placeholder="Ingrese la descripcion de la habitacion" id="drescriptionRoom" formControlName="drescriptionRoom" >
+      <!-- <div *ngIf="submitted && f.descHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.descHotel.errors.required">* La descripción del hotel es obligatoria</div>
+      </div> -->
+    </div>
+  <!-- 
+    <div class="form-group">
+      <label for="photoHotel">Fotos del hotel</label>
+      <input
+          formControlName="photoHotel"
+          id="photoHotel"
+          type="photoHotel"
+          class="form-control"
+          (change)="onphotoHotelChange($event)">
+    </div> -->
+  
+    <div class="form-group">
+      <label for="priceRoom">Precio Habitacion:</label>
+      <input type="text" class="form-control" placeholder="Ingrese el precio de la habitacion" id="priceRoom" formControlName="priceRoom" >
+      <!-- <div *ngIf="submitted && f.addressHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.addressHotel.errors.required">* La dirección del hotel es obligatoria</div>
+      </div> -->
+    </div>
+  
+    <div class="form-group">
+      <label for="StateRoom">Estado habitacion:</label>
+      <input type="text" class="form-control" placeholder=" activo/inactivo" id="StateRoom" formControlName="StateRoom" >
+      <!-- <div *ngIf="submitted && f.fkCompany.errors" class="invalid-feedback">
+        <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
+      </div> -->
+    </div>
+
+    <div class="form-group">
+      <label for="companyRoom">Identificador del  hotel al que pertenece:</label>
+      <input type="text" class="form-control" placeholder="empresa a la que pertenece" id="companyRoom" formControlName="hotelReference" >
+      <!-- <div *ngIf="submitted && f.fkCompany.errors" class="invalid-feedback">
+        <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
+      </div> -->
+    </div>
+  
+    <button type="submit" class="btn btn-primary mb-3">Submit</button>
+    <button type="submit" class="btn btn-primary mb-3" (click)="showRoomButton()" >mostrar</button>
+    <br>
+    <br>
+  
+
+    <table>
+      <tr>
+        <th>dato</th><td></td>
+        <th>dato</th><td></td>
+        <th>dato</th><td></td>
+        <th>dato</th><td></td>
+        <th>dato</th><td></td>
+        <th>dato</th><td></td>
+        <th>dato</th><td></td>
+        <th>dato</th><td></td>
+        <th>dato</th><td></td>
+        <th>dato</th>
+      </tr>
+      <tr *ngFor="let data of dataRoom[0]">
+        <th>{{data.id_habitacion }}</th><td></td>
+        <th>{{data.capacidad_habitacion}}</th><td></td>
+        <th>{{data.checkout}}</th><td></td>
+        <th>{{data.fecha_inicio_habitacion}}</th><td></td>
+        <th>{{data.fecha_fin_habitacion}}</th><td></td>
+        <th>{{data.checkin}}</th><td></td>
+        <th>{{data.descripcion_habitacion}}</th><td></td>
+        <th>{{data.precio_habitacion}}</th><td></td>
+        <th>{{data.estado_habitacion }}</th><td></td>
+        <th>{{data.id_hotel_H_FK }}</th>
+      </tr>
+  </table>
+  
+  </form>
+  <br>
+      <br>
+
+
+
+
+  <form [formGroup]="lookForHotel" (ngSubmit)="lookForHotelButton()">
+      
+    <div class="form-group">
+      <label for="place">Destino:</label>
+      <input type="text" class="form-control" placeholder="destino" id="place" formControlName="place" >
+      <!-- <div *ngIf="submitted && f.fkCompany.errors" class="invalid-feedback">
+        <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
+      </div> -->
+    
+   
+      <label for="numberPeople">Cantidad de peronas</label>
+      <input type="text" class="form-control" placeholder="cantida de personas" id="numberPeople" formControlName="numberPeople" >
+      <!-- <div *ngIf="submitted && f.fkCompany.errors" class="invalid-feedback">
+        <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
+      </div> -->
+  
+      <label for="dateStartTravel">Fecha inicio</label>
+      <input type="date" class="form-control" placeholder="dateStartTravel" id="dateStartTravel" formControlName="dateStartTravel" >
+      <!-- <div *ngIf="submitted && f.fkCompany.errors" class="invalid-feedback">
+        <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
+      </div> -->
+   
+      <label for="dateEndTravel">Fecha fin</label>
+      <input type="date" class="form-control" placeholder="dateEndTravel" id="dateEndTravel" formControlName="dateEndTravel" >
+      <!-- <div *ngIf="submitted && f.fkCompany.errors" class="invalid-feedback">
+        <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
+      </div> -->
+      
+
+     <button type="submit" class="btn btn-primary mb-3" >Buscar</button> 
+       <tr *ngFor="let data of dataHotelSeeker[0]">
+        <th><input type= "text" id = "idHotel123" value="{{data.nombre_hotel}}"></th><td></td>
+        <th>{{data.nombre_hotel}} <button (click)="johann()"> ver  hotel</button></th><td></td>
+        <th>{{data.ubicacion_hotel}}</th><td></td>
+        <th>{{data.telefono1_hotel}}</th><td></td>
+        <th>{{data.telefono2_hotel}}</th><td></td>
+        <th>{{data.descripcion_hotel}}</th><td></td>
+        <th>{{data.foto_hotel}}</th><td></td>
+        <th>{{data.descripcion_hotel}}</th><td></td>
+        <th>{{data.id_empresa_H_FK  }}</th><td></td> 
+        <br>
+      <br>
+        <br>
+      <br>
+      <tr *ngFor="let data of habitacion123[0]">
+        <th>{{data.id_habitacion }}</th><td></td>
+        <th>{{data.capacidad_habitacion}}</th><td></td>
+        <th>{{data.checkout}}</th><td></td>
+        <th>{{data.fecha_inicio_habitacion}}</th><td></td>
+        <th>{{data.fecha_fin_habitacion}}</th><td></td>
+        <th>{{data.checkin}}</th><td></td>
+        <th>{{data.descripcion_habitacion}}</th><td></td>
+        <th>{{data.precio_habitacion}}</th><td></td>
+        <th>{{data.estado_habitacion }}</th><td></td>
+        <th>{{data.id_hotel_H_FK }}</th>
+      </tr> 
+
+        </div>
+        <br>
+        <br>
+    </form>
+
+
