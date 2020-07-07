@@ -70,22 +70,15 @@
   </div>
 
   <div class="form-group">
-    <label for="photoHotel">Foto del hotel:</label>
-    <input type="text" class="form-control" placeholder="Ingrese cualquier cosa" id="photoHotel" formControlName="photoHotel" >
-    <!-- <div *ngIf="submitted && f.descHotel.errors" class="invalid-feedback">
-      <div *ngIf="f.descHotel.errors.required">* La descripción del hotel es obligatoria</div>
-    </div> -->
-  </div>
-<!-- 
-  <div class="form-group">
     <label for="photoHotel">Fotos del hotel</label>
     <input
-        formControlName="photoHotel"
-        id="photoHotel"
-        type="photoHotel"
+        formControlName="file"
+        id="file"
+        type="file"
         class="form-control"
-        (change)="onphotoHotelChange($event)">
-  </div> -->
+        accept="image/*"
+        (change)="onFileChange($event)">
+  </div>
 
   <div class="form-group">
     <label for="addressHotel">Dirección del hotel:</label>
@@ -132,7 +125,7 @@
         <th>{{data.telefono1_hotel}}</th><td></td>
         <th>{{data.telefono2_hotel}}</th><td></td>
         <th>{{data.descripcion_hotel}}</th><td></td>
-        <th>{{data.foto_hotel}}</th><td></td>
+        <th><img src="../assets/{{data.foto_hotel}}" width="20%" height="20%"></th><td></td>
         <th>{{data.direccion_hotel}}</th><td></td>
         <th>{{data.id_empresa_H_FK }}</th>
       </tr>
@@ -148,16 +141,10 @@
       <button type="submit" class="btn btn-primary mb-3">Eliminar</button><br>
       </div>
   </form>
-  <br>
+
 <br>
 <br>
-
-
-
-
-
-
-  
+ 
   <form [formGroup]="registerRoom" (ngSubmit)="addRoomButton()" *ngIf= "!active">
   
     <div class="form-group">
@@ -284,8 +271,6 @@
       <br>
 
 
-
-
   <form [formGroup]="lookForHotel" (ngSubmit)="lookForHotelButton()">
       
     <div class="form-group">
@@ -347,5 +332,3 @@
         <br>
         <br>
     </form>
-
-
