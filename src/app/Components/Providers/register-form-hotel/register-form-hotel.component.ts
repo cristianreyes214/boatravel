@@ -16,9 +16,11 @@ export class RegisterFormHotelComponent implements OnInit {
   searchHotel: FormGroup;
   registerHotel: FormGroup;
   deleteHotel: FormGroup;
+  searchForm: FormGroup;
+  bookingForm: FormGroup;
 
 // Se instancia en el constructor una variable que sea del tipo de las importaciones realizadas para poder usarlas
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private databasesService: DatabasesService) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private databasesService: DatabasesService) {}
 
   // Aqui se instancia de manera inmedita los elementos del componente que estan dentro de la instancia (similar al update de Unity)
   ngOnInit(): void {
@@ -37,6 +39,14 @@ export class RegisterFormHotelComponent implements OnInit {
       fileSource: [''],
       addressHotel: [''],
       fkCompany: ['']
+    });
+    this.searchForm = this.formBuilder.group({
+      fechaIni: [''],
+      fechaFin: ['']
+    });
+    this.bookingForm = this.formBuilder.group({
+      checkIn: [''],
+      checkOut: ['']
     });
   }
 
@@ -117,5 +127,79 @@ export class RegisterFormHotelComponent implements OnInit {
           console.log("epa");
       });
    }
-*/
+----------------------------------------------------------------------------------------- */
+  //Variables
+
+  //Variables del buscador
+  fechaIni1 = 0;
+  fechaFin1 = 0;
+  resultado1 = 0;
+
+  //Variables de la habitación
+  fechaIni2 = 0;
+  fechaFin2 = 0;
+  resultado2 = 0;
+
+  searching(){
+    this.fechaIni1 = new Date(this.searchForm.value.fechaIni).getTime();
+    this.fechaFin1 = new Date(this.searchForm.value.fechaFin).getTime();
+    this.resultado1 = ((this.fechaFin1 - this.fechaIni1)/(1000*60*60*24));
+    const fechaInicioBuscador = ((this.fechaIni1) / (1000*60*60*24));
+    const fechaFinBuscador = ((this.fechaFin1) / (1000*60*60*24));
+    //const fechasBuscador = new Array(fechaInicioBuscador, fechaFinBuscador);
+    this.buscarDisponibilidad(this.fechaIni1);
+    return this.fechaFin1;
+  }
+
+  buscarDisponibilidad(fechaInicio: number) {
+    this.fechaIni2 = new Date(this.bookingForm.value.checkIn).getTime();
+    this.fechaFin2 = new Date(this.bookingForm.value.checkOut).getTime();
+    this.resultado2 = ((this.fechaFin2 - this.fechaIni2) / (1000 * 60 * 60 * 24));
+
+    const Disponibilidad = "Disponible";
+    const arreglo = new Array(this.resultado2);
+
+    let i ;
+    let b ;
+
+    for (i = 0; i < arreglo.length; i++){
+      arreglo[i] = Disponibilidad;
+    }
+
+    //arreglo [5] = "checkIn";
+
+    const posicion1 = ((fechaInicio - this.fechaIni2) / (1000 * 60 * 60 * 24));
+    const posicion2 = ((this.fechaFin1 - this.fechaIni2) / (1000 * 60 * 60 * 24));
+    const tamanoP = posicion2 - posicion1;
+    console.log(tamanoP);
+
+
+    for (i = posicion1; posicion2 > i; i++){
+      if ((arreglo[i] == "Disponible") || (arreglo[i] == "checkOut")){
+        if (tamanoP === 1){
+            //arreglo[i-1] = "Check in";
+          arreglo[i] = "Check In";
+          arreglo[i+1] = "Check Out";
+          alert("Se reservo");
+        }
+        else if (tamanoP > 1){
+          arreglo[posicion1] = "Check In";
+          arreglo[posicion2] = "Check Out";
+          if ((i !== posicion1) && (i !== posicion2)){
+            arreglo[i] = "Ocupado";
+          }
+        }
+      }
+      else{
+        alert("No esta disponible");
+      }
+    }
+    console.log(arreglo);
+    }
+
+
+
 }
+
+
+
