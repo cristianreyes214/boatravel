@@ -2,6 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.8.
 
+## Setup
+
+1. Crear carpeta "boatravel-app" dentro de la carpeta htdocs de xampp.
+2. Activar en xampp Apache y MySQL.
+3. git init dentro de la carpeta boatravel-app
+4. git remote add origin 
+5. git remote add fork
+6. git fetch --all
+7. git reset --hard origin/master
+8. Instalar dependencias con npm i --save-dev @angular-devkit/build-angular
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
