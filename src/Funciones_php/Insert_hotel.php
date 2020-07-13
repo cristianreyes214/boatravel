@@ -45,7 +45,7 @@
     $addresHotel = $_POST['addressHotel'];
     $fkCompany = $_POST['fkCompany'];
 
-    mysqli_query($conexion, "INSERT INTO hotel (id_hotel, nombre_hotel, ubicacion_hotel, telefono1_hotel, telefono2_hotel, descripcion_hotel, foto_hotel, direccion_hotel, id_empresa_H_FK)
+    mysqli_query($conexion, "INSERT INTO hotel (matricula_hotel , nombre_hotel, ubicacion_hotel, telefono1_hotel, telefono2_hotel, descripcion_hotel, foto_hotel, direccion_hotel, nit_empresa_H_FK)
                                 VALUES ('$idHotel', '$nameHotel', '$locationHotel', '$telHotel', '$tel2', '$descHotel', '$sqlVal', '$addresHotel', '$fkCompany')");
   } else{
         echo json_encode(

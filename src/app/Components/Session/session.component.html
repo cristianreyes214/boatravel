@@ -1,0 +1,16 @@
+<h2>Iniciar sesion</h2>
+<form [formGroup]="loginProveedor" (ngSubmit)="loginProvedorButton()">
+  <div class="form-group">
+    <label for="userProveedor">usuario proveedor:</label>
+    <input type="text" class="form-control" placeholder="usuario proveedor" id="userProveedor"
+      formControlName="userProveedor">
+  </div>
+  <div class="form-group">
+    <label for="passwordProveedor">contraseña proveedor:</label>
+    <input type="text" class="form-control" placeholder="contraseña proveedor" id="passwordProveedor"
+      formControlName="passwordProveedor">
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary mb-3">Login</button>
+
+</form>

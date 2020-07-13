@@ -1,0 +1,45 @@
+<form id="searchHotel" (ngSubmit)="showHotelButton()">
+    
+    <label>Busqueda hote</label>
+  <div>
+    <button type="submit" class="btn btn-primary mb-3">mostrar</button><br>
+    <table>
+      <tr>
+        
+        <td></td>
+        <th>nombre hotel</th>
+        <td></td>
+        <th>ubicacion hotel</th>
+        <td></td>
+        <th>telefono 1</th>
+        <td></td>
+        <th> telefono 2</th>
+        <td></td>
+        <th>descripcion hotel</th>
+        <td></td>
+        <th>foto hotel</th>
+        <td></td>
+        <th>direccion hotel</th>
+        <td></td>
+      </tr>
+      <tr *ngFor="let data of dataHotel[0]">
+       
+        <td></td>
+        <th>{{data.nombre_hotel}}</th>
+        <td></td>
+        <th>{{data.ubicacion_hotel}}</th>
+        <td></td>
+        <th>{{data.telefono1_hotel}}</th>
+        <td></td>
+        <th>{{data.telefono2_hotel}}</th>
+        <td></td>
+        <th>{{data.descripcion_hotel}}</th>
+        <td></td>
+        <th><img src="../assets/{{data.foto_hotel}}" width="20%" height="20%"></th>
+        <td></td>
+        <th>{{data.direccion_hotel}}</th>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</form>

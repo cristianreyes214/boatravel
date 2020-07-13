@@ -6,12 +6,12 @@
  
   $params = json_decode($json); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
   
-  require("../comun/db.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
+   // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
 
-  $conexion = conexion(); // CREA LA CONEXION
+  $conexion = new mysqli("localhost","root","","boatravel"); // CREA LA CONEXION
   
   // REALIZA LA QUERY A LA DB
-  mysqli_query($conexion, "UPDATE hotel SET  id_hotel ='$params->idHotel', nombre_hotel	='$params->nameHotel', ubicacion_hotel= '$params->locationHotel', telefono1_hotel='$params->telHotel', telefono2_hotel='$params->tel2', descripcion_hotel='$params->descHotel',foto_hotel='$params->photoHotel', direccion_hotel='$params->addressHotel' WHERE id_hotel=0 ;");    
+  mysqli_query($conexion, "UPDATE hotel SET  matricula_hotel  ='$params->idHotel', nombre_hotel	='$params->nameHotel', ubicacion_hotel= '$params->locationHotel', telefono1_hotel='$params->telHotel', telefono2_hotel='$params->tel2', descripcion_hotel='$params->descHotel', direccion_hotel='$params->addressHotel' WHERE matricula_hotel ='$params->idHotel';");    
   
   class Result {}
 

@@ -1,0 +1,89 @@
+<form [formGroup]="registerRoom" (ngSubmit)="addRoomButton()" >
+    <h2>Formulario registro habitacionl</h2>
+  <div class="form-group">
+    <label for="idRoom">id del habitacion:</label>
+    <input type="number" class="form-control" placeholder="Ingrese el nombre del hotel" id="idRoom"
+      formControlName="idRoom">
+    <!-- <div *ngIf="submitted && f.nameHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.nameHotel.errors.required">* El nombre del hotel es obligatorio</div>
+      </div> -->
+  </div>
+  <div class="form-group">
+    <label for="capacityRoom">Capacidad habitacion:</label>
+    <input type="text" class="form-control" placeholder="Ingrese la capacidad de la habitacion" id="capacityRoom"
+      formControlName="capacityRoom">
+    <!-- <div *ngIf="submitted && f.nameHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.nameHotel.errors.required">* El nombre del hotel es obligatorio</div>
+      </div> -->
+  </div>
+  <div class="form-group">
+    <label for="Checkout">Checkout:</label>
+    <input type="time" class="form-control" placeholder="Ingrese el Checkout" id="Checkout" formControlName="Checkout">
+    <!-- <div *ngIf="submitted && f.locationHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.locationHotel.errors.required">* La ubicación del hotel es obligatorio</div>
+      </div> -->
+  </div>
+  <div class="form-group">
+    <label for="dateStartRoom">Fecha inicio habitacion:</label>
+    <input type="date" class="form-control" placeholder="Ingrese fecha de disponivilidad inicial" id="dateStartRoom"
+      formControlName="dateStartRoom">
+    <!-- <div *ngIf="submitted && f.telHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.telHotel.errors.required">* Debe de tener por lo menos un número de teléfono hotel es obligatorio</div>
+      </div> -->
+  </div>
+  <div class="form-group">
+    <label for="dateEndRoom">Fecha fin habitacion:</label>
+    <input type="date" class="form-control" placeholder="Ingrese fecha de disponivilidad final " id="dateEndRoom"
+      formControlName="dateEndRoom">
+  </div>
+  <div class="form-group">
+    <label for="Checkin">Checkin :</label>
+    <input type="time" class="form-control" placeholder="Ingrese el Checkin" id="Checkin" formControlName="Checkin">
+    <!-- <div *ngIf="submitted && f.descHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.descHotel.errors.required">* La descripción del hotel es obligatoria</div>
+      </div> -->
+  </div>
+  <div class="form-group">
+    <label for="drescriptionRoom">descripcion habitacion:</label>
+    <input type="text" class="form-control" placeholder="Ingrese la descripcion de la habitacion" id="drescriptionRoom"
+      formControlName="drescriptionRoom">
+    <!-- <div *ngIf="submitted && f.descHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.descHotel.errors.required">* La descripción del hotel es obligatoria</div>
+      </div> -->
+  </div>
+  <!-- 
+    <div class="form-group">
+      <label for="photoHotel">Fotos del hotel</label>
+      <input
+          formControlName="photoHotel"
+          id="photoHotel"
+          type="photoHotel"
+          class="form-control"
+          (change)="onphotoHotelChange($event)">
+    </div> -->
+  <div class="form-group">
+    <label for="priceRoom">Precio Habitacion:</label>
+    <input type="number" class="form-control" placeholder="Ingrese el precio de la habitacion" id="priceRoom"
+      formControlName="priceRoom">
+    <!-- <div *ngIf="submitted && f.addressHotel.errors" class="invalid-feedback">
+        <div *ngIf="f.addressHotel.errors.required">* La dirección del hotel es obligatoria</div>
+      </div> -->
+  </div>
+  <div class="form-group">
+    <label for="StateRoom">Estado habitacion:</label>
+    <input type="text" class="form-control" placeholder=" activo/inactivo" id="StateRoom" formControlName="StateRoom">
+    <!-- <div *ngIf="submitted && f.fkCompany.errors" class="invalid-feedback">
+        <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
+      </div> -->
+  </div>
+  <div class="form-group">
+    <label for="companyRoom">Identificador del hotel al que pertenece:</label>
+    <input type="text" class="form-control" placeholder="empresa a la que pertenece" id="companyRoom"
+      formControlName="hotelReference">
+    <!-- <div *ngIf="submitted && f.fkCompany.errors" class="invalid-feedback">
+        <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
+      </div> -->
+  </div>
+  <button type="submit" class="btn btn-primary mb-3">Submit</button>
+  <br>
+  <br>

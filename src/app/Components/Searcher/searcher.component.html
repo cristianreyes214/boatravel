@@ -1,0 +1,81 @@
+<form [formGroup]="lookForHotel" (ngSubmit)="lookForHotelButton()" >
+    <h2>Buscador</h2>
+  <div class="form-group">
+    <label for="place">Destino:</label>
+    <input type="text" class="form-control" placeholder="destino" id="place" formControlName="place">
+    <!-- <div *ngIf="submitted && f.fkCompany.errors" class="invalid-feedback">
+        <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
+      </div> -->
+
+    <label for="numberPeople">Cantidad de peronas</label>
+    <input type="text" class="form-control" placeholder="cantida de personas" id="numberPeople"
+      formControlName="numberPeople">
+    <!-- <div *ngIf="submitted && f.fkCompany.errors" class="invalid-feedback">
+        <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
+      </div> -->
+
+    <label for="dateStartTravel">Fecha inicio</label>
+    <input type="date" class="form-control" placeholder="dateStartTravel" id="dateStartTravel"
+      formControlName="dateStartTravel">
+    <!-- <div *ngIf="submitted && f.fkCompany.errors" class="invalid-feedback">
+        <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
+      </div> -->
+
+    <label for="dateEndTravel">Fecha fin</label>
+    <input type="date" class="form-control" placeholder="dateEndTravel" id="dateEndTravel"
+      formControlName="dateEndTravel">
+    <!-- <div *ngIf="submitted && f.fkCompany.errors" class="invalid-feedback">
+        <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
+      </div> -->
+
+
+    <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+    <tr *ngFor="let data of dataHotelSeeker[0]">
+      <th>{{data.matricula_hotel}}</th>
+      <td></td>
+      <th>{{data.nombre_hotel}} <button (click)="lookForRoomButton( variable=data.matricula_hotel )"> ver hotel</button></th>
+      <td></td>
+      <th>{{data.ubicacion_hotel}}</th>
+      <td></td>
+      <th>{{data.telefono1_hotel}}</th>
+      <td></td>
+      <th>{{data.telefono2_hotel}}</th>
+      <td></td>
+      <th>{{data.descripcion_hotel}}</th>
+      <td></td>
+      <th>{{data.foto_hotel}}</th>
+      <td></td>
+      <th>{{data.descripcion_hotel}}</th>
+      <td></td>
+      <th>{{data.id_empresa_H_FK  }}</th>
+      <td></td>
+      <br>
+      <br>
+      <br>
+      <br>
+    <tr *ngFor="let data of habitacion123[0]">
+      <th>{{data.id_habitacion }}<button (click)="lookForDisponibilityRoomButton( variable=data.id_habitacion )"> ver hotel</button></th>
+      <td></td>
+      <th>{{data.capacidad_habitacion}}</th>
+      <td></td>
+      <th>{{data.checkout}}</th>
+      <td></td>
+      <th>{{data.fecha_inicio_habitacion}}</th>
+      <td></td>
+      <th>{{data.fecha_fin_habitacion}}</th>
+      <td></td>
+      <th>{{data.checkin}}</th>
+      <td></td>
+      <th>{{data.descripcion_habitacion}}</th>
+      <td></td>
+      <th>{{data.precio_habitacion}}</th>
+      <td></td>
+      <th>{{data.estado_habitacion }}</th>
+      <td></td>
+      <th>{{data.id_hotel_H_FK }}</th>
+    </tr>
+
+  </div>
+  <br>
+  <br>
+</form>

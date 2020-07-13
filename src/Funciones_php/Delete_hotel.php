@@ -12,16 +12,6 @@
     "boatravel");
 
   // REALIZA LA QUERY A LA DB
-  mysqli_query($conexion, "DELETE FROM hotel WHERE id_hotel = '$params->IDDHotel';");
+  mysqli_query($conexion, "DELETE FROM hotel WHERE matricula_hotel  = '$params->IDDHotel';");
 
-  class Result {}
-
-  // GENERA LOS DATOS DE RESPUESTA
-  $response = new Result();
-  $response->resultado = 'OK';
-  $response->mensaje = 'SE REGISTRO EXITOSAMENTE EL USUARIO';
-
-  header('Content-Type: application/json');
-
-  echo json_encode($response); // MUESTRA EL JSON GENERADO
 ?>

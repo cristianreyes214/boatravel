@@ -1,0 +1,10 @@
+<form [formGroup]="deleteHotel" (ngSubmit)="deleteHotelButton()" >
+    <h2>Eliminar hotel</h2>
+  <div class="form-group">
+    <label for="IDDHotel">ID del hotel a eliminar:</label>
+    <input type="text" class="form-control" placeholder="Id hotel" id="IDDHotel" formControlName="IDDHotel">
+    <button type="submit" class="btn btn-primary mb-3">Eliminar</button><br>
+  </div>
+  <br>
+  <br>
+</form>
