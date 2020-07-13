@@ -12,6 +12,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 6. git fetch --all
 7. git reset --hard origin/master
 8. Instalar dependencias con npm i --save-dev @angular-devkit/build-angular
+9. npm start para ejecutar proyecto
 
 ## Development server
 
