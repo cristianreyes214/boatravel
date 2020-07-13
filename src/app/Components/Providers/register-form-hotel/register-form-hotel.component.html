@@ -369,3 +369,35 @@
   <br>
   <br>
 </form>
+=======
+      <label for="IDDHotel">ID del hotel a eliminar:</label>
+      <input type="text" class="form-control" placeholder="Id hotel" id="IDDHotel" formControlName="IDDHotel" >
+      <button type="submit" class="btn btn-primary mb-3">Eliminar</button><br>
+      </div>
+  </form>
+
+  <!---------------------- Aquí va el buscador de fechas ----------------------------->
+
+<br>
+<form [formGroup]="bookingForm">
+  <div class="form-group">
+    <label>Habitación :</label>
+    <input type="date" class="form-control" id="checkIn" formControlName="checkIn" >
+    <input type="date" class="form-control" id="checkOut" formControlName="checkOut" >
+    <!--<button type="submit" class="btn btn-primary mb-3">Reservar</button><br> -->
+    </div>
+</form>
+<br>
+<form [formGroup]="searchForm" (ngSubmit)="searching()">
+  <div class="form-group">
+    <label>Buscador:</label>
+    <input type="date" class="form-control" id="fechaIni" formControlName="fechaIni" >
+    <input type="date" class="form-control" id="fechaFin" formControlName="fechaFin" >
+    <button type="submit" class="btn btn-primary mb-3">Buscar</button><br>
+    </div>
+</form>
+
+<br>
+
+
+
