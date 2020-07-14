@@ -9,12 +9,13 @@ import { RegisterFormHotelComponent } from './Components/Providers/register-form
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DatabasesService } from './databases.service';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { SessionComponent } from './Components/Session/session.component';
 import { RoomComponentComponent } from './Components/Providers/room-component/room-component.component';
 import { RegisterFormRoomComponentComponent } from './Components/Providers/register-form-room-component/register-form-room-component.component';
 import { SearcherComponent } from './Components/searcher/searcher.component';
 import { DeleteHotelComponentComponent } from './Components/Providers/delete-hotel-component/delete-hotel-component.component';
+
 
 @NgModule({
   declarations: [

@@ -45,6 +45,7 @@ export class SearcherComponent implements OnInit {
       dateStartTravel: [(document.getElementById('dateStartTravel') as HTMLInputElement).value],
       dateEndTravel: [(document.getElementById('dateEndTravel') as HTMLInputElement).value]
     });
+    alert (JSON.stringify((this.lookForHotel.value)));
 
 /*
     this.dateStartSearch = new Date(this.lookForHotel.value.dateStartSearch).getTime();
