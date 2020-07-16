@@ -71,23 +71,19 @@ export class RegisterFormHotelComponent implements OnInit {
     });
   }
   updateHotelButton() {
-    if (!this.registerHotel.value.idHotel || !this.registerHotel.value.nameHotel || !this.registerHotel.value.locationHotel ||
-      !this.registerHotel.value.telHotel || !this.registerHotel.value.tel2 || !this.registerHotel.value.descHotel ||
-      !this.registerHotel.value.addressHotel || !this.registerHotel.value.fkCompany) {
-      alert('Completa todos los recuadros');
-    } else {
+    
       this.databasesService.updateDataHotel(this.registerHotel.value).subscribe();
       alert('El hotel se ha actualizado con exito');
     }
-  }
+  
 
-  prueba(variable: any) {
+  /*prueba(variable: any) {
 
     const arreglo = new Array("johann", "montoya", "rubuano");
     alert(arreglo);
     console.log(arreglo);
 
-  }
+  }*/
 }
 /*
 //Variables del buscador

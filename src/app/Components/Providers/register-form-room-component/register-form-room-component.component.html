@@ -1,13 +1,15 @@
 <form [formGroup]="registerRoom" (ngSubmit)="addRoomButton()" >
+
     <h2>Formulario registro habitacionl</h2>
   <div class="form-group">
     <label for="idRoom">id del habitacion:</label>
-    <input type="number" class="form-control" placeholder="Ingrese el nombre del hotel" id="idRoom"
+    <input type="number" class="form-control"  placeholder="Ingrese el nombre del hotel" id="idRoom"
       formControlName="idRoom">
-    <!-- <div *ngIf="submitted && f.nameHotel.errors" class="invalid-feedback">
+      <!-- <div *ngIf="submitted && f.nameHotel.errors" class="invalid-feedback">
         <div *ngIf="f.nameHotel.errors.required">* El nombre del hotel es obligatorio</div>
       </div> -->
   </div>
+
   <div class="form-group">
     <label for="capacityRoom">Capacidad habitacion:</label>
     <input type="text" class="form-control" placeholder="Ingrese la capacidad de la habitacion" id="capacityRoom"
@@ -84,4 +86,10 @@
         <div *ngIf="f.fkCompany.errors.required">* El identificador es obligatorio</div>
       </div> -->
   </div>
-  <button type="submit" class="btn btn-primary mb-3">Submit</button>
+  <button class="btn btn-primary mb-3">Submit</button>
+ <!-- <p><label >Identifidor de la habitacion</label></p>
+  <p *ngIf="!active"><button (click)="fullDataRoomButton()">Actualizar</button></p>
+  <p *ngIf="active"><button (click)="updateRoomButton()">Actualizar</button></p>
+  <input type="number" class="form-control" placeholder="Id de la habitacion que desea actualizar" id="idRoomUpdate"
+      formControlName="idRoomUpdate">
+       -->

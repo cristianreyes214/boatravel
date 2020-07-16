@@ -30,12 +30,22 @@ loginDataProveedor(loginProveedor){
     return this.http.post(`${this.URL}Update_hotel.php`, JSON.stringify(registerHotel));
   }
   ///////////////////////////////////////////////// habitacio
-  showDataRoom(){
+  showDataRoom() {
     return this.http.get(`${this.URL}Show_Room.php`);
+  }
+  showOneDataRoom(variable) {
+    return this.http.post(`${this.URL}Show_One_Room.php`, JSON.stringify(variable));
   }
   insertDataRoom(registerRoom){
     return this.http.post(`${this.URL}Insert_Room.php`, JSON.stringify(registerRoom));
   }
+  deleteDataRoom(deleteRoom){
+    return this.http.post(`${this.URL}Delete_room.php`, JSON.stringify(deleteRoom));
+  }
+  updateDataRoom(registerRoom){
+    return this.http.post(`${this.URL}Update_room.php`, JSON.stringify(registerRoom));
+  }
+  ////////////////////////////////////////////////// buscador
   lookForDataHotel(lookForHotel){
     return this.http.post(`${this.URL}LookFor_Hotel.php`, JSON.stringify(lookForHotel));
   }
@@ -44,6 +54,11 @@ loginDataProveedor(loginProveedor){
   }
   buscadorArregloHabitacion(variable){
     return this.http.post(`${this.URL}Disponibility_Room.php`, JSON.stringify(variable));
+  }
+  updateArrayRoom(arregloEnvio){
+    alert("scv   "+ (JSON.stringify(arregloEnvio))); 
+    return this.http.post(`${this.URL}Update_Array_Room.php`, JSON.stringify(arregloEnvio));
+    
   }
 
 }
