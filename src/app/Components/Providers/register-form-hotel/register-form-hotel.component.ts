@@ -14,11 +14,7 @@ export class RegisterFormHotelComponent implements OnInit {
   // Declaración de las variables;
 
   registerHotel: FormGroup;
-
   variable: any = '';
-
-
-
 
   // Se instancia en el constructor una variable que sea del tipo de las importaciones realizadas para poder usarlas
   constructor(private formBuilder: FormBuilder, private databasesService: DatabasesService) { }
@@ -131,8 +127,5 @@ export class RegisterFormHotelComponent implements OnInit {
 
 
 Envía un mensaje
-
-*/
-
 
 
