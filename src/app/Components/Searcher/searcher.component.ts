@@ -18,11 +18,18 @@ export class SearcherComponent implements OnInit {
   dateStartRoom = 0;
   dateEndRoom = 0;
   result2 = 0;
-  reservaHabitacion: any = [];
+  reservaHabitacion: any= [];
   variable: any = '';
+  arregloEnvio:FormGroup;
+
   constructor(private formBuilder: FormBuilder, private databasesService: DatabasesService) { }
 
   ngOnInit(): void {
+    this.arregloEnvio = this.formBuilder.group({
+      idRoom: [''],
+      arrayRoom: ['']
+      
+    });
     this.lookForHotel = this.formBuilder.group({
       place: [''],
       numberPeople: [''],
@@ -53,7 +60,7 @@ export class SearcherComponent implements OnInit {
     // this.buscarDisponibilidad();
    // return this.dateEndSearch , this.dateStartSearch;
 
-*/
+*/this.habitacion123= [];
     this.databasesService.buscadorHabitaciones123(this.lookForHotel.value).subscribe(
       habitacion123 => {
         this.habitacion123.push(habitacion123);
@@ -65,7 +72,7 @@ export class SearcherComponent implements OnInit {
   
 
   lookForDisponibilityRoomButton(variable: any) {
-    let arregloHabitacion: any;
+    let arregloHabitacion;
 
     this.dateStartSearch = new Date(this.lookForHotel.value.dateStartSearch).getTime();
     this.dateEndSearch = new Date(this.lookForHotel.value.dateEndSearch).getTime();
@@ -73,13 +80,52 @@ export class SearcherComponent implements OnInit {
 
     this.databasesService.buscadorArregloHabitacion(variable).subscribe(
       arreglo => {
-        this.reservaHabitacion.push(arreglo);
+        this.reservaHabitacion = arreglo;
       }
     );
-
+    alert(JSON.stringify(variable));
+    
     setTimeout(() => {
-      arregloHabitacion = this.reservaHabitacion; alert(JSON.stringify(arregloHabitacion)); console.log(JSON.stringify(arregloHabitacion)); alert(JSON.stringify(Object.values(arregloHabitacion)));
-    }, 500);
+      arregloHabitacion = JSON.stringify(this.reservaHabitacion);
+      let porfin2 = arregloHabitacion.split('!');
+      let i;
+      let cadena = '';
+      for (i = 0; i < porfin2.length; i++) {
+        if (i % 2 == 0) {
+        } else {
+          cadena += ",!" + porfin2[i] + "!";
+
+        }
+
+      }
+      let arrgloFinal = cadena.split(',');
+      arrgloFinal.shift();
+      alert(JSON.stringify(arrgloFinal));
+      console.log((arrgloFinal));
+      let b;
+      for (b = 1; 10 > b; b++) {
+        arrgloFinal[b] = "Punto A";
+      }
+      const arreglillo = JSON.stringify(arrgloFinal);
+
+      this.arregloEnvio = this.formBuilder.group({
+        idRoom: [variable],
+        arrayRoom: [arreglillo]
+
+      });
+      alert(JSON.stringify(this.arregloEnvio.value));
+      console.log(JSON.stringify(this.arregloEnvio.value));
+
+      this.databasesService.updateArrayRoom(this.arregloEnvio.value).subscribe(
+      );
+
+      console.log(arrgloFinal);
+      alert(JSON.stringify(arrgloFinal));
+
+      //arrgloFinal = [];
+     // cadena = '';
+
+    }, 100);
 
 
 
@@ -89,3 +135,52 @@ export class SearcherComponent implements OnInit {
   
 
 }
+/*
+//Variables del buscador
+  fechaIni1 = 0;
+  fechaFin1 = 0;
+  resultado1 = 0;
+
+  //Variables de la habitación
+  fechaIni2 = 0;
+  fechaFin2 = 0;
+  resultado2 = 0;
+
+  searching(){
+    this.fechaIni1 = new Date(this.searchForm.value.fechaIni).getTime();
+    this.fechaFin1 = new Date(this.searchForm.value.fechaFin).getTime();
+    this.buscarDisponibilidad();
+    return this.fechaFin1, this.fechaIni1;
+  }
+
+  buscarDisponibilidad(fechaInicio: number) {
+    this.fechaIni2 = new Date(this.bookingForm.value.checkIn).getTime();
+    this.fechaFin2 = new Date(this.bookingForm.value.checkOut).getTime();
+    this.resultado2 = ((this.fechaFin2 - this.fechaIni2) / (1000 * 60 * 60 * 24));
+
+    const Disponibilidad = ['Disponible'];
+    const arreglo = new Array(this.resultado2);
+
+    let i ;
+    let b ;
+
+    for (i = 0; i < arreglo.length; i++){
+      arreglo[i] = Disponibilidad;
+    }
+
+    const posicion1 = (( this.fechaIni1 - this.fechaIni2) / (1000 * 60 * 60 * 24));
+    const posicion2 = ((this.fechaFin1 - this.fechaIni2) / (1000 * 60 * 60 * 24));
+    console.log(posicion1);
+    console.log(posicion2);
+
+    for (i = posicion1; posicion2 > i; i++){
+      arreglo[i] = "Punto A";
+    }
+    console.log(arreglo);
+    }
+
+
+Envía un mensaje
+
+*/
+

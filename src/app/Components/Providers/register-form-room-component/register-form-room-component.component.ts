@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DatabasesService } from '../../../databases.service';
+import { variable } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-register-form-room-component',
@@ -18,10 +19,15 @@ export class RegisterFormRoomComponentComponent implements OnInit {
   result2 = 0;
   reservaHabitacion: any = [];
   registerRoom: FormGroup;
+  fullDataRoom: any;
+  active: boolean;
+  variable: string;
+  segmentado: any = [];
 
   constructor(private formBuilder: FormBuilder, private databasesService: DatabasesService) { }
 
   ngOnInit(): void {
+    this.active= false;
     this.registerRoom = this.formBuilder.group({
       idRoom: [''],
       capacityRoom: [''],
@@ -41,7 +47,7 @@ export class RegisterFormRoomComponentComponent implements OnInit {
     this.result2 = ((this.dateEndRoom - this.dateStartRoom) / (1000 * 60 * 60 * 24));
 
 
-    const Disponibilidad = 'Disponible';
+    const Disponibilidad = '!Disponible!';
     const arreglo = new Array(this.result2);
 
     let i;
@@ -68,7 +74,73 @@ export class RegisterFormRoomComponentComponent implements OnInit {
     console.log(arreglo);
     this.databasesService.insertDataRoom(this.registerRoom.value).subscribe();
 
+  }
+  updateRoomButton(){
+    this.dateStartRoom = new Date(this.registerRoom.value.dateStartRoom).getTime();
+    this.dateEndRoom = new Date(this.registerRoom.value.dateEndRoom).getTime();
+    this.result2 = ((this.dateEndRoom - this.dateStartRoom) / (1000 * 60 * 60 * 24));
 
 
+    const Disponibilidad = '!Disponible!';
+    const arreglo = new Array(this.result2);
+
+    let i;
+
+    for (i = 0; i < arreglo.length; i++) {
+      arreglo[i] = Disponibilidad;
+    }
+
+    const variable22 = JSON.stringify(arreglo);
+    this.registerRoom = this.formBuilder.group({
+      idRoom: [this.registerRoom.value.idRoom],
+      capacityRoom: [this.registerRoom.value.capacityRoom],
+      dateStartRoom: [this.registerRoom.value.dateStartRoom],
+      dateEndRoom: [this.registerRoom.value.dateEndRoom],
+      Checkin: [this.registerRoom.value.Checkin],
+      drescriptionRoom: [this.registerRoom.value.drescriptionRoom],
+      priceRoom: [this.registerRoom.value.priceRoom],
+      StateRoom: [this.registerRoom.value.StateRoom],
+      hotelReference: [this.registerRoom.value.hotelReference],
+      arrayRoom: [variable22]
+    });
+    //this.databasesService.updateDataRoom(this.registerRoom.value).subscribe();
+    alert(JSON.stringify(this.registerRoom.value));
+    console.log(variable22);
+
+  }
+  fullDataRoomButton() {
+
+   // let cadena = " tg,r stg,tr tg,tr g,";
+
+    this.variable = (document.getElementById('idRoomUpdate') as HTMLInputElement).value;
+    this.databasesService.showOneDataRoom(this.variable).subscribe(
+      dataRoom => {
+        this.fullDataRoom = dataRoom;
+        // let cadena2 = this.fullDataRoom;
+        //let cadena3 = cadena2.split(':');
+        // alert("dbgfb" + (JSON.stringify(cadena2)));
+        //console.log(cadena2);
+        // console.log(cadena3);
+        // return cadena2;
+      });
+    setTimeout(() => {
+
+      /*  const cadena3: any = JSON.stringify(this.fullDataRoom);
+       const candena4: any = cadena3.split(':');
+       this.registerRoom.get('idRoom').setValue(55555);
+       this.active = true;
+       let cadena2 = cadena.split(',');
+      */
+
+      let variar = JSON.stringify(this.fullDataRoom);
+      let variar2 = variar.split('"');
+      console.log(variar);
+      console.log(variar2);// idea con los corchetes.
+      alert((variar));
+      // console.log(((variar)));
+      //  const candena4: any = console.log(JSON.stringify((this.fullDataRoom)).split('"'));
+      //console.log(JSON.stringify((candena4)));
+
+    }, 10);
   }
 }

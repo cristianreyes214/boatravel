@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DatabasesService } from '../../../databases.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { DatabasesService } from '../../../databases.service';
 })
 export class DeleteHotelComponentComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private databasesService: DatabasesService) { }
+  constructor(private formBuilder: FormBuilder, private databasesService: DatabasesService) { }
   deleteHotel: FormGroup;
   ngOnInit(): void {
     this.deleteHotel = this.formBuilder.group({
@@ -19,7 +18,7 @@ export class DeleteHotelComponentComponent implements OnInit {
   }
   deleteHotelButton(){
     this.databasesService.deleteDataHotel(this.deleteHotel.value).subscribe();
-    alert( 'El hotel se ha eliminado exitosamente'+ JSON.stringify(this.deleteHotel.value ));
+    alert( 'El hotel se ha eliminado exitosamente');
   }
 
 }

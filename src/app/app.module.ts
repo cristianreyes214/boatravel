@@ -15,6 +15,7 @@ import { RoomComponentComponent } from './Components/Providers/room-component/ro
 import { RegisterFormRoomComponentComponent } from './Components/Providers/register-form-room-component/register-form-room-component.component';
 import { SearcherComponent } from './Components/searcher/searcher.component';
 import { DeleteHotelComponentComponent } from './Components/Providers/delete-hotel-component/delete-hotel-component.component';
+import { DeleteRoomComponentComponent } from './Components/Providers/delete-room-component/delete-room-component.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { DeleteHotelComponentComponent } from './Components/Providers/delete-hot
     RegisterFormRoomComponentComponent,
     SearcherComponent,
     DeleteHotelComponentComponent,
+    DeleteRoomComponentComponent,
   ],
   imports: [
     BrowserModule,

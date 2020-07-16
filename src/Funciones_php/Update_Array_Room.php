@@ -5,14 +5,11 @@
   $json = file_get_contents('php://input'); // RECIBE EL JSON DE ANGULAR
  
   $params = json_decode($json); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
-  
-   // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
 
   $conexion = new mysqli("localhost","root","","boatravel"); // CREA LA CONEXION
   
   // REALIZA LA QUERY A LA DB
-  mysqli_query($conexion, "UPDATE hotel SET  matricula_hotel  ='$params->idHotel', nombre_hotel	='$params->nameHotel', ubicacion_hotel= '$params->locationHotel', telefono1_hotel='$params->telHotel', telefono2_hotel='$params->tel2', descripcion_hotel='$params->descHotel', direccion_hotel='$params->addressHotel' WHERE matricula_hotel ='$params->idHotel';");    
+  mysqli_query($conexion, "UPDATE habitacion SET  array_disponibilidad ='$params->arrayRoom' WHERE `habitacion`.`id_habitacion` =$params->idRoom;");    
   
-
- 
+  echo "0 results";
 ?>
