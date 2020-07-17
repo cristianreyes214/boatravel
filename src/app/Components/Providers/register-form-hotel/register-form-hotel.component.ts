@@ -15,6 +15,7 @@ export class RegisterFormHotelComponent implements OnInit {
 
   registerHotel: FormGroup;
   variable: any = '';
+  submitted = false;
 
   // Se instancia en el constructor una variable que sea del tipo de las importaciones realizadas para poder usarlas
   constructor(private formBuilder: FormBuilder, private databasesService: DatabasesService) { }
@@ -22,16 +23,16 @@ export class RegisterFormHotelComponent implements OnInit {
   // Aqui se instancia de manera inmedita los elementos del componente que estan dentro de la instancia (similar al update de Unity)
   ngOnInit(): void {
     this.registerHotel = this.formBuilder.group({
-      idHotel: [''],
-      nameHotel: [''],
-      locationHotel: [''],
-      telHotel: [''],
-      tel2: [''],
-      descHotel: [''],
-      file: [''],
+      idHotel: ['', Validators.required],
+      nameHotel: ['', Validators.required],
+      locationHotel: ['', Validators.required],
+      telHotel: ['', Validators.required],
+      tel2: ['', Validators.required],
+      descHotel: ['', Validators.required],
+      file: ['', Validators.required],
       fileSource: [''],
       addressHotel: [''],
-      fkCompany: ['']
+      fkCompany: ['', Validators.required]
     });
   }
 
@@ -51,21 +52,32 @@ export class RegisterFormHotelComponent implements OnInit {
 
   // Método para añadir nuevo hotel, con el botón AddHotelButton
   addHotelButton() {
-    const formData = new FormData();
-    // append es un método de FormData para agregar un valor nuevo al final del conjunto de valores
-    formData.append('idHotel', this.registerHotel.value.idHotel);
-    formData.append('nameHotel', this.registerHotel.value.nameHotel);
-    formData.append('locationHotel', this.registerHotel.value.locationHotel);
-    formData.append('telHotel', this.registerHotel.value.telHotel);
-    formData.append('tel2', this.registerHotel.value.tel2);
-    formData.append('descHotel', this.registerHotel.value.descHotel);
-    formData.append('file', this.registerHotel.get('fileSource').value);
-    formData.append('addressHotel', this.registerHotel.value.addressHotel);
-    formData.append('fkCompany', this.registerHotel.value.fkCompany);
-    this.databasesService.InsertDateHotel(formData).subscribe((res: Response) => {
-      alert('Hotel añadido exitosamente');
-    });
+    this.submitted = true;
+        // Validación del formulario
+        // tslint:disable-next-line: align
+        if (this.registerHotel.invalid) {
+          return;
+        }
+    else
+    {
+      const formData = new FormData();
+      // append es un método de FormData para agregar un valor nuevo al final del conjunto de valores
+      formData.append('idHotel', this.registerHotel.value.idHotel);
+      formData.append('nameHotel', this.registerHotel.value.nameHotel);
+      formData.append('locationHotel', this.registerHotel.value.locationHotel);
+      formData.append('telHotel', this.registerHotel.value.telHotel);
+      formData.append('tel2', this.registerHotel.value.tel2);
+      formData.append('descHotel', this.registerHotel.value.descHotel);
+      formData.append('file', this.registerHotel.get('fileSource').value);
+      formData.append('addressHotel', this.registerHotel.value.addressHotel);
+      formData.append('fkCompany', this.registerHotel.value.fkCompany);
+      this.databasesService.InsertDateHotel(formData).subscribe((res: Response) => {
+        alert('Hotel añadido exitosamente');
+      });
+    }
   }
+
+  // Actualizar datos de hotel
   updateHotelButton() {
 
       this.databasesService.updateDataHotel(this.registerHotel.value).subscribe();

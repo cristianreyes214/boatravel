@@ -22,10 +22,13 @@ export class RegisterProvidersComponent implements OnInit {
       nameProvider: ['', Validators.required],
       passProvider: ['', Validators.required],
       firstNameProvider: ['', Validators.required],
+      secondNameProvider: [''],
       firstSurname: ['', Validators.required],
+      secondSurnameProvider: [''],
       telProvider: ['', Validators.required],
+      tel2: [''],
       dateProvider: ['', Validators.required],
-      emailProvider: ['', Validators.required]
+      emailProvider: ['', Validators.required, Validators.email]
     });
   }
 

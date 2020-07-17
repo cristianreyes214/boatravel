@@ -36,8 +36,8 @@ loginDataProveedor(loginProveedor){
   showOneDataRoom(variable) {
     return this.http.post(`${this.URL}Show_One_Room.php`, JSON.stringify(variable));
   }
-  insertDataRoom(registerRoom){
-    return this.http.post(`${this.URL}Insert_Room.php`, JSON.stringify(registerRoom));
+  insertDataRoom(roomFormData){
+    return this.http.post(`${this.URL}Insert_Room.php`, roomFormData);
   }
   deleteDataRoom(deleteRoom){
     return this.http.post(`${this.URL}Delete_room.php`, JSON.stringify(deleteRoom));
