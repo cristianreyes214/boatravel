@@ -56,9 +56,18 @@ loginDataProveedor(loginProveedor){
     return this.http.post(`${this.URL}Disponibility_Room.php`, JSON.stringify(variable));
   }
   updateArrayRoom(arregloEnvio){
-    alert("scv   "+ (JSON.stringify(arregloEnvio))); 
+    alert("scv   "+ (JSON.stringify(arregloEnvio)));
     return this.http.post(`${this.URL}Update_Array_Room.php`, JSON.stringify(arregloEnvio));
-    
+  }
+
+  /////////////////////////////////////////////////// Proveedor
+
+  InsertDateProvider(formData){
+    return this.http.post(`${this.URL}provider_functions.php`, formData);
+  }
+
+  InsertDateCompany(formData){
+    return this.http.post(`${this.URL}company_functions.php`, formData);
   }
 
 }

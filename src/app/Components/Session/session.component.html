@@ -1,17 +1,28 @@
-<h2>Iniciar sesion</h2>
+<h3>Buen día señor proveedor:</h3>
+<h2>Iniciar sesión</h2>
 <form [formGroup]="loginProveedor" (ngSubmit)="loginProvedorButton()">
   <div class="form-group">
-    <label for="userProveedor">usuario proveedor:</label>
-    <input type="text" class="form-control" placeholder="usuario proveedor" id="userProveedor"
-      formControlName="userProveedor">
-  </div>
-  <div class="form-group">
-    <label for="passwordProveedor">contraseña proveedor:</label>
-    <input type="text" class="form-control" placeholder="contraseña proveedor" id="passwordProveedor"
-      formControlName="passwordProveedor">
+    <label for="userProveedor">Usuario:</label>
+    <input type="text" class="form-control" placeholder="Escriba aquí su usuario" id="userProveedor"
+      formControlName="userProveedor" [ngClass]="{ 'is-invalid': submitted && f.userProveedor.errors }">
+      <!-------------- Validación nombre de usuario -------------------->
+    <div *ngIf="submitted && f.userProveedor.errors" class="invalid-feedback">
+      <div *ngIf="f.userProveedor.errors.required">* El nombre del usuario es obligatorio</div>
+    </div>
   </div>
   <br>
-  <button type="submit" class="btn btn-primary mb-3" >Login</button>
+  <div class="form-group">
+    <label for="passwordProveedor">Contraseña:</label>
+    <input type="text" class="form-control" placeholder="Escriba aquí su contraseña" id="passwordProveedor"
+      formControlName="passwordProveedor" [ngClass]="{ 'is-invalid': submitted && f.passwordProveedor.errors }">
+      <!-------------- Validación contraseña de usuario -------------------->
+    <div *ngIf="submitted && f.passwordProveedor.errors" class="invalid-feedback">
+      <div *ngIf="f.passwordProveedor.errors.required">* La contraseña es un campo obligatorio</div>
+    </div>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Entrar</button>
  <!--<h2 *ngIf="active"routerLink='/hotels'>puuuuuuuutp</h2> -->
-
 </form>
+<br>
+<button [routerLink] = "['/registerProvider']" class="btn btn-primary">Registrar</button>

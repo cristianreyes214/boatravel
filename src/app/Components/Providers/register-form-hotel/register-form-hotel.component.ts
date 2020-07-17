@@ -67,11 +67,11 @@ export class RegisterFormHotelComponent implements OnInit {
     });
   }
   updateHotelButton() {
-    
+
       this.databasesService.updateDataHotel(this.registerHotel.value).subscribe();
       alert('El hotel se ha actualizado con exito');
     }
-  
+
 
   /*prueba(variable: any) {
 
@@ -129,3 +129,4 @@ export class RegisterFormHotelComponent implements OnInit {
 Envía un mensaje
 
 
+*/

@@ -1,0 +1,67 @@
+<h2>Registre su empresa</h2>
+<form [formGroup]="registerCompany" (ngSubmit)="addCompanyButton()">
+
+  <div class="form-group">
+    <label>Nit de la empresa:</label>
+    <input type="text" class="form-control" placeholder="Escriba el número de nit de su empresa" id="idCompany"
+      formControlName="idCompany" [ngClass]="{ 'is-invalid': submitted && f.idCompany.errors }">
+      <!-------------- Validación nombre de usuario -------------------->
+    <div *ngIf="submitted && f.idCompany.errors" class="invalid-feedback">
+      <div *ngIf="f.idCompany.errors.required">* Este campo es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Nombre de la empresa:</label>
+    <input type="text" class="form-control" placeholder="Escriba el nombre completo de la empresa" id="nameCompany"
+      formControlName="nameCompany" [ngClass]="{ 'is-invalid': submitted && f.nameCompany.errors }">
+      <!-------------- Validación contraseña de usuario -------------------->
+    <div *ngIf="submitted && f.nameCompany.errors" class="invalid-feedback">
+      <div *ngIf="f.nameCompany.errors.required">* Este campo es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Telefono principal:</label>
+    <input type="number" class="form-control" placeholder="Escriba el número telefonico de la empresa" id="telCompany1"
+      formControlName="telCompany1" [ngClass]="{ 'is-invalid': submitted && f.telCompany1.errors }">
+      <!-------------- Validación contraseña de usuario -------------------->
+    <div *ngIf="submitted && f.telCompany1.errors" class="invalid-feedback">
+      <div *ngIf="f.telCompany1.errors.required">* Este campo es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Telefono secundario:</label>
+    <input type="number" class="form-control" placeholder="Escriba otro número telefonico de la empresa" id="telCompany2"
+      formControlName="telCompany2" [ngClass]="{ 'is-invalid': submitted && f.telCompany2.errors }">
+      <!-------------- Validación contraseña de usuario -------------------->
+    <div *ngIf="submitted && f.telCompany2.errors" class="invalid-feedback">
+      <div *ngIf="f.telCompany2.errors.required">* Este campo es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Correo electrónico:</label>
+    <input type="email" class="form-control" placeholder="Escriba el correo electrónico de la empresa" id="emailCompany"
+      formControlName="emailCompany" [ngClass]="{ 'is-invalid': submitted && f.emailCompany.errors }">
+      <!-------------- Validación contraseña de usuario -------------------->
+    <div *ngIf="submitted && f.emailCompany.errors" class="invalid-feedback">
+      <div *ngIf="f.emailCompany.errors.required">* Este campo es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Número de cédula:</label>
+    <input type="text" class="form-control" placeholder="Debe ser la cédula del propietario" id="idProveedor"
+      formControlName="idProveedor" [ngClass]="{ 'is-invalid': submitted && f.idProveedor.errors }">
+      <!-------------- Validación contraseña de usuario -------------------->
+    <div *ngIf="submitted && f.idProveedor.errors" class="invalid-feedback">
+      <div *ngIf="f.idProveedor.errors.required">* Este campo es obligatorio</div>
+    </div>
+  </div>
+
+  <br>
+  <button type="submit" class="btn btn-primary">Registrar</button>
+
+</form>

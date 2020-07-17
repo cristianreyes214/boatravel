@@ -12,30 +12,41 @@ import { Router } from '@angular/router';
 export class SessionComponent implements OnInit {
   loginProveedor: FormGroup;
   active: boolean;
+  submitted = false;
   constructor(private formBuilder: FormBuilder, private databasesService: DatabasesService, private router: Router) { }
 
   ngOnInit(): void {
-    this.active= false;
+    this.active = false;
     this.loginProveedor = this.formBuilder.group({
-      userProveedor: [''],
-      passwordProveedor: ['']
+      userProveedor: ['', Validators.required],
+      passwordProveedor: ['', Validators.required]
     });
   }
+
+  get f(){
+    return this.loginProveedor.controls;
+  }
+
   loginProvedorButton(){
-    this.databasesService.loginDataProveedor(this.loginProveedor.value).subscribe(
-      datos => {
-        if (datos === 'exito') {
-          this.active = true;
-          alert('Ha iniciado sesion exitosamente');
-          //routerLink='/hotels';
-          //this.router.navigate(['/hotels']);
-        }else{
-          this.active = false;
-          alert('Su usuario o contraseña es incorrecto'+ this.active);
-         
+    this.submitted = true;
+    if (this.loginProveedor.invalid) {
+      return;
+    }
+    else {
+      this.databasesService.loginDataProveedor(this.loginProveedor.value).subscribe(
+        datos => {
+          if (datos === 'exito') {
+            this.active = true;
+            alert('Ha iniciado sesion exitosamente');
+            //routerLink='/hotels';
+            //this.router.navigate(['/hotels']);
+          } else {
+            this.active = false;
+            alert('Su usuario o contraseña es incorrecto' + this.active);
+          }
         }
-      }
-    );
+      );
+    }
   }
 
 }

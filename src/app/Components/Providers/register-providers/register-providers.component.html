@@ -1,0 +1,100 @@
+<form [formGroup]="registerProviders" (ngSubmit)="addProviderButton()">
+
+  <h2>Registro de proveedores</h2>
+
+  <div class="form-group">
+    <label>Documento de identidad:</label>
+    <input type="text" class="form-control" placeholder="Ingrese su C.C. o D.N.I" id="idProveedor"
+      formControlName="idProveedor" [ngClass]="{ 'is-invalid': submitted && f.idProveedor.errors }">
+    <div *ngIf="submitted && f.idProveedor.errors" class="invalid-feedback">
+      <div *ngIf="f.idProveedor.errors.required">* Este campo es obligatorio </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="nameProvider">Usuario:</label>
+    <input type="text" class="form-control" placeholder="Ingrese un nombre de usuario" id="nameProvider"
+      formControlName="nameProvider" [ngClass]="{ 'is-invalid': submitted && f.nameProvider.errors }">
+    <div *ngIf="submitted && f.nameProvider.errors" class="invalid-feedback">
+      <div *ngIf="f.nameProvider.errors.required">* Este campo es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Contraseña:</label>
+    <input type="text" class="form-control" placeholder="Ingrese una contraseña" id="passProvider"
+      formControlName="passProvider" [ngClass]="{ 'is-invalid': submitted && f.passProvider.errors }">
+    <div *ngIf="submitted && f.passProvider.errors" class="invalid-feedback">
+      <div *ngIf="f.passProvider.errors.required">* Este campo es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Primer nombre:</label>
+    <input type="text" class="form-control" placeholder="Ingrese su nombre" id="firstNameProvider"
+      formControlName="firstNameProvider" [ngClass]="{ 'is-invalid': submitted && f.firstNameProvider.errors }">
+    <div *ngIf="submitted && f.firstNameProvider.errors" class="invalid-feedback">
+      <div *ngIf="f.firstNameProvider.errors.required">* Este campo es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Segundo nombre:</label>
+    <input type="text" class="form-control" placeholder="Ingrese su segundo nombre" id="secondNameProvider"
+      formControlName="secondNameProvider">
+  </div>
+
+  <div class="form-group">
+    <label>Primer apellido :</label>
+    <input type="text" class="form-control" placeholder="Ingrese su primer apellido" id="firstSurname"
+      formControlName="firstSurname" [ngClass]="{ 'is-invalid': submitted && f.firstSurname.errors }">
+    <div *ngIf="submitted && f.firstSurname.errors" class="invalid-feedback">
+      <div *ngIf="f.firstSurname.errors.required">* Este campo es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Segundo apellido :</label>
+    <input type="text" class="form-control" placeholder="Ingrese su segundo apellido" id="secondSurnameProvider"
+      formControlName="secondSurnameProvider">
+  </div>
+
+  <div class="form-group">
+    <label>Teléfono 1:</label>
+    <input type="number" class="form-control" placeholder="Ingrese el número telefónico" id="telProvider"
+      formControlName="telProvider" [ngClass]="{ 'is-invalid': submitted && f.telProvider.errors }">
+    <div *ngIf="submitted && f.telProvider.errors" class="invalid-feedback">
+      <div *ngIf="f.telProvider.errors.required">* Este campo es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Teléfono 2:</label>
+    <input type="number" class="form-control" placeholder="Ingrese otro número telefónico (si lo tiene)" id="tel2"
+      formControlName="tel2">
+  </div>
+
+  <div class="form-group">
+    <label>Fecha nacimiento:</label>
+    <input type="date" class="form-control" id="dateProvider"
+      formControlName="dateProvider" [ngClass]="{ 'is-invalid': submitted && f.dateProvider.errors }">
+    <div *ngIf="submitted && f.dateProvider.errors" class="invalid-feedback">
+      <div *ngIf="f.dateProvider.errors.required">* Este campo es obligatorio</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Correo eléctronico: </label>
+    <input type="email" class="form-control" placeholder="Ingrese su correo eléctronio" id="emailProvider"
+      formControlName="emailProvider" [ngClass]="{ 'is-invalid': submitted && f.emailProvider.errors }">
+    <div *ngIf="submitted && f.emailProvider.errors" class="invalid-feedback">
+      <div *ngIf="f.emailProvider.errors.required">* Este campo es obligatorio</div>
+        <div *ngIf="f.emailProvider.errors.email">Escriba un correo válido</div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary">Añadir proveedor</button>
+  <br>
+  <br>
+  <button (click)="backInicio()" class="btn btn-primary">Volver a menú</button>
+</form>
