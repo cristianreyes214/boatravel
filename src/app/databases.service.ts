@@ -52,14 +52,17 @@ loginDataProveedor(loginProveedor){
   buscadorHabitaciones123(lookForHotel){
     return this.http.post(`${this.URL}LookFor_Room.php`, JSON.stringify(lookForHotel));
   }
+  getDataRoom(variable){
+    return this.http.post(`${this.URL}Get_Date_Room.php`, JSON.stringify(variable));
+  }
+
   buscadorArregloHabitacion(variable){
     return this.http.post(`${this.URL}Disponibility_Room.php`, JSON.stringify(variable));
   }
   updateArrayRoom(arregloEnvio){
-    alert("scv   "+ (JSON.stringify(arregloEnvio)));
     return this.http.post(`${this.URL}Update_Array_Room.php`, JSON.stringify(arregloEnvio));
   }
-
+ 
   /////////////////////////////////////////////////// Proveedor
 
   InsertDateProvider(formData){

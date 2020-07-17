@@ -33,7 +33,7 @@
     <tr *ngFor="let data of dataHotelSeeker[0]">
       <th>{{data.matricula_hotel}}</th>
       <td></td>
-      <th>{{data.nombre_hotel}} <button (click)="lookForRoomButton( variable=data.matricula_hotel )"> ver hotel</button></th>
+      <th>{{data.nombre_hotel}} <button type="button" (click)="lookForRoomButton( variable=data.matricula_hotel )"> ver hotel</button></th>
       <td></td>
       <th>{{data.ubicacion_hotel}}</th>
       <td></td>
@@ -53,7 +53,7 @@
       <br>
       <br>
     <tr *ngFor="let data of habitacion123[0]">
-      <th>{{data.id_habitacion }}<button (click)="lookForDisponibilityRoomButton( variable=data.id_habitacion )"> reservar habitacion</button></th>
+      <th>{{data.id_habitacion }}<button type="button" (click)="lookForDisponibilityRoomButton( variable=data.id_habitacion )"> reservar habitacion</button></th>
       <td></td>
       <th>{{data.capacidad_habitacion}}</th>
       <td></td>

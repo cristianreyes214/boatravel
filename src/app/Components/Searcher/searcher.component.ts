@@ -73,16 +73,32 @@ export class SearcherComponent implements OnInit {
 
   lookForDisponibilityRoomButton(variable: any) {
     let arregloHabitacion;
-
-    this.dateStartSearch = new Date(this.lookForHotel.value.dateStartSearch).getTime();
-    this.dateEndSearch = new Date(this.lookForHotel.value.dateEndSearch).getTime();
+    let getDatesRoom;
+    let getDateFromString="";
+    let getDateFinal;
+    this.dateStartSearch = new Date(this.lookForHotel.value.dateStartTravel).getTime();
+    this.dateEndSearch = new Date(this.lookForHotel.value.dateEnddateEndTravel).getTime();
     // this.buscarDisponibilidad();
+  // alert((this.lookForHotel.value.dateStartTravel));
 
-    this.databasesService.buscadorArregloHabitacion(variable).subscribe(
-      arreglo => {
-        this.reservaHabitacion = arreglo;
-      }
-    );
+  
+      this.databasesService.getDataRoom(variable).subscribe(datos => {getDatesRoom=JSON.stringify(datos);});
+      setTimeout(() => {
+      getDateFromString= getDatesRoom.split('"');
+      alert("buscdor " + (this.lookForHotel.value.dateStartTravel));
+      getDateFinal= getDateFromString[3];
+      //this.dateStartSearch= 
+  alert("habitacion  " + (getDateFromString));
+    alert("habitacion variable  " + (getDateFinal));
+   
+     
+      
+    }, 10);
+  
+
+   
+/*
+    this.databasesService.buscadorArregloHabitacion(variable).subscribe(arreglo => {this.reservaHabitacion = arreglo;});
     alert(JSON.stringify(variable));
     
     setTimeout(() => {
@@ -126,7 +142,7 @@ export class SearcherComponent implements OnInit {
      // cadena = '';
 
     }, 100);
-
+*/
 
 
 
